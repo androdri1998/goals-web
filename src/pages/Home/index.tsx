@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
+import ResumeGoals from './components/ResumeGoals';
+
 import { asyncExampleAction } from '../../store/actions/app.actions';
 
 const Home: React.FC = () => {
@@ -13,7 +15,7 @@ const Home: React.FC = () => {
 
   return (
     <Header>
-      <div>teste</div>
+      <ResumeGoals />
     </Header>
   );
 };
