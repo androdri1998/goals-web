@@ -9,8 +9,8 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
   body {
-    background: #312E38;
-    color: #fff;
+    background: #fcfcfc;
+    color: #312E38;
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {

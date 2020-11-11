@@ -2,21 +2,23 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   margin: 10px;
-  padding: 15px;
+  padding: 30px;
 
-  border-radius: 10px;
-  background-color: #fcfcfc;
+  border-radius: 30px;
+  background-color: #41187a;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 export const Title = styled.p`
-  font-size: 1.8em;
-  font-weight: 500;
-  color: black;
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #fafafa;
   margin-bottom: 10px;
 `;
 
 export const Header = styled.header`
+  margin-bottom: 10px;
+
   div {
     display: flex;
 
@@ -24,17 +26,16 @@ export const Header = styled.header`
     justify-content: space-between;
 
     p {
-      color: black;
+      color: #fafafa;
       font-family: sans-serif;
 
-      font-size: 1.5em;
-      font-weight: 300;
+      font-size: 1.6em;
+      font-weight: 600;
     }
   }
 `;
 
 export const Content = styled.section`
-  margin-top: 15px;
   margin-bottom: 5px;
 
   div {
@@ -50,7 +51,7 @@ export const ProgressBar = styled.div`
   height: 15px;
 
   border-radius: 10px;
-  background: #d3d3d3;
+  background: #260e47;
 
   div {
     display: flex;
@@ -59,26 +60,35 @@ export const ProgressBar = styled.div`
     height: 100%;
     width: 20%;
 
-    background: #1d7835;
+    background: #fafafa;
     border-radius: 10px;
-
-    p {
-      color: white;
-      font-family: sans-serif;
-
-      font-size: 0.8em;
-      font-weight: 100;
-
-      margin-right: 5px;
-    }
   }
 `;
 
 export const Footer = styled.footer`
-  p {
-    color: black;
-    font-weight: 300;
+  display: flex;
+  align-items: flex-end;
 
-    font-size: 0.9em;
+  margin-top: 80px;
+
+  p {
+    color: #fafafa;
+    font-weight: 600;
+
+    font-size: 3em;
+  }
+
+  span {
+    font-size: 1.6em;
+    color: #fafafa;
+
+    margin-bottom: 5px;
+  }
+
+  .description {
+    font-size: 2.4em;
+    margin-left: 5px;
+
+    font-weight: 500;
   }
 `;

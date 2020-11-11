@@ -6,6 +6,8 @@ import ResumeGoals from './components/ResumeGoals';
 
 import { asyncExampleAction } from '../../store/actions/app.actions';
 
+import { Container, TitleListGoals } from './styles';
+
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -15,7 +17,10 @@ const Home: React.FC = () => {
 
   return (
     <Header>
-      <ResumeGoals />
+      <Container>
+        <ResumeGoals />
+        <TitleListGoals>Your goals</TitleListGoals>
+      </Container>
     </Header>
   );
 };

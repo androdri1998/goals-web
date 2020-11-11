@@ -22,14 +22,14 @@ const ResumeGoals: React.FC = () => {
       <Content>
         <div>
           <ProgressBar>
-            <div>
-              <p>20%</p>
-            </div>
+            <div />
           </ProgressBar>
         </div>
       </Content>
       <Footer>
-        <p>2 objetivos alcançados de 10 objetivos</p>
+        <p>2/</p>
+        <span>10</span>
+        <span className="description">goals</span>
       </Footer>
     </Container>
   );
