@@ -27,9 +27,10 @@ const ResumeGoals: React.FC = () => {
         </div>
       </Content>
       <Footer>
-        <p>2/</p>
-        <span>10</span>
-        <span className="description">goals</span>
+        <div>
+          <p>2</p>
+        </div>
+        <span className="description">Goals acomplished</span>
       </Footer>
     </Container>
   );

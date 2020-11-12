@@ -4,7 +4,7 @@ export const Container = styled.section`
   margin: 10px;
   padding: 30px;
 
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: #41187a;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
@@ -67,27 +67,32 @@ export const ProgressBar = styled.div`
 
 export const Footer = styled.footer`
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
 
   margin-top: 80px;
 
-  p {
-    color: #fafafa;
-    font-weight: 600;
+  div {
+    display: flex;
+    align-items: flex-end;
 
-    font-size: 3em;
-  }
+    p {
+      color: #fafafa;
+      font-weight: 600;
 
-  span {
-    font-size: 1.6em;
-    color: #fafafa;
+      font-size: 3em;
+    }
 
-    margin-bottom: 5px;
+    span {
+      font-size: 1.6em;
+      color: #fafafa;
+
+      margin-bottom: 5px;
+    }
   }
 
   .description {
-    font-size: 2.4em;
-    margin-left: 5px;
+    color: #fafafa;
+    font-size: 1.5em;
 
     font-weight: 500;
   }

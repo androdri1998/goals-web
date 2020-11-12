@@ -4,8 +4,11 @@ export const Container = styled.main`
   padding: 0 10px;
 `;
 
+export const ContainerGoals = styled.main`
+  padding: 0 10px;
+`;
+
 export const TitleListGoals = styled.p`
-  margin-left: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
 

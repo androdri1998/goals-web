@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
 import ResumeGoals from './components/ResumeGoals';
+import ItemGoal from './components/ItemGoal';
 
 import { asyncExampleAction } from '../../store/actions/app.actions';
 
-import { Container, TitleListGoals } from './styles';
+import { Container, TitleListGoals, ContainerGoals } from './styles';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,29 @@ const Home: React.FC = () => {
     <Header>
       <Container>
         <ResumeGoals />
-        <TitleListGoals>Your goals</TitleListGoals>
+        <ContainerGoals>
+          <TitleListGoals>Your goals</TitleListGoals>
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+          <ItemGoal />
+        </ContainerGoals>
       </Container>
     </Header>
   );
