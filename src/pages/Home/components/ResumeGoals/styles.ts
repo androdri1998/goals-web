@@ -5,14 +5,14 @@ export const Container = styled.section`
   padding: 30px;
 
   border-radius: 20px;
-  background-color: #41187a;
+  background-color: #22223b;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 export const Title = styled.p`
   font-size: 1.1em;
   font-weight: 300;
-  color: #fafafa;
+  color: #f8f7ff;
   margin-bottom: 10px;
 `;
 
@@ -26,7 +26,7 @@ export const Header = styled.header`
     justify-content: space-between;
 
     p {
-      color: #fafafa;
+      color: #f8f7ff;
       font-family: sans-serif;
 
       font-size: 1.6em;
@@ -51,7 +51,7 @@ export const ProgressBar = styled.div`
   height: 15px;
 
   border-radius: 10px;
-  background: #260e47;
+  background: #f2e9e4;
 
   div {
     display: flex;
@@ -60,7 +60,7 @@ export const ProgressBar = styled.div`
     height: 100%;
     width: 20%;
 
-    background: #fafafa;
+    background: #4a4e69;
     border-radius: 10px;
   }
 `;
@@ -76,7 +76,7 @@ export const Footer = styled.footer`
     align-items: flex-end;
 
     p {
-      color: #fafafa;
+      color: #f8f7ff;
       font-weight: 600;
 
       font-size: 3em;
@@ -84,14 +84,14 @@ export const Footer = styled.footer`
 
     span {
       font-size: 1.6em;
-      color: #fafafa;
+      color: #f8f7ff;
 
       margin-bottom: 5px;
     }
   }
 
   .description {
-    color: #fafafa;
+    color: #f8f7ff;
     font-size: 1.5em;
 
     font-weight: 500;

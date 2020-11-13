@@ -43,7 +43,7 @@ export const ContainerValue = styled.div`
 
   color: #fafafa;
   border-radius: 5px;
-  background: #096e0a;
+  background: #4a4e69;
 `;
 
 export const Value = styled.p`
@@ -62,7 +62,7 @@ export const ProgressBar = styled.div`
   margin: 10px 0;
 
   border-radius: 10px;
-  background: #e0e0e0;
+  background: #f2e9e4;
 
   div {
     display: flex;
@@ -71,7 +71,7 @@ export const ProgressBar = styled.div`
     height: 100%;
     width: 20%;
 
-    background: #096e0a;
+    background: #4a4e69;
     border-radius: 10px;
   }
 `;

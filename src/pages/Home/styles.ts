@@ -29,7 +29,7 @@ export const AddGoalBtn = styled.div`
   right: 20px;
 
   border-radius: 50%;
-  background: #41187a;
+  background: #22223b;
   color: #fafafa;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
