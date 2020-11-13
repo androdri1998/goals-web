@@ -32,8 +32,7 @@ export const TitleValue = styled.p`
   padding: 5px;
 
   border-radius: 5px;
-  color: #fafafa;
-  background: #260e47;
+  font-weight: 500;
 `;
 
 export const ContainerValue = styled.div`
@@ -44,7 +43,7 @@ export const ContainerValue = styled.div`
 
   color: #fafafa;
   border-radius: 5px;
-  background: green;
+  background: #096e0a;
 `;
 
 export const Value = styled.p`
@@ -72,7 +71,7 @@ export const ProgressBar = styled.div`
     height: 100%;
     width: 20%;
 
-    background: green;
+    background: #096e0a;
     border-radius: 10px;
   }
 `;

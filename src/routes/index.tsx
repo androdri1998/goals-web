@@ -4,6 +4,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import routesConstants from '../utils/routesConstants';
 
 const Home = lazy(() => import('../pages/Home'));
+const AddGoal = lazy(() => import('../pages/AddGoal'));
 
 const Routes: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Routes: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path={routesConstants.HOME} exact component={Home} />
+          <Route path={routesConstants.ADD_GOAL} exact component={AddGoal} />
         </Switch>
       </BrowserRouter>
     </Suspense>

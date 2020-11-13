@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import ResumeGoals from './components/ResumeGoals';
 import ItemGoal from './components/ItemGoal';
 
 import { asyncExampleAction } from '../../store/actions/app.actions';
+import routesConstants from '../../utils/routesConstants';
 
-import { Container, TitleListGoals, ContainerGoals } from './styles';
+import {
+  Container,
+  TitleListGoals,
+  ContainerGoals,
+  AddGoalBtn,
+} from './styles';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -43,6 +50,11 @@ const Home: React.FC = () => {
           <ItemGoal />
           <ItemGoal />
         </ContainerGoals>
+        <Link to={routesConstants.ADD_GOAL}>
+          <AddGoalBtn>
+            <i className="material-icons">add</i>
+          </AddGoalBtn>
+        </Link>
       </Container>
     </Header>
   );
