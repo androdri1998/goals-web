@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { MdChevronLeft } from 'react-icons/md';
 
-import { Container, ContentHeader } from './styles';
+import { history } from '../../store';
 
-const Header: React.FC = ({ children }) => {
+import { Container, ContentHeader, ContainerBackButton } from './styles';
+
+interface IHeaderProps {
+  title: string;
+  withBackButton?: boolean;
+}
+
+const Header: React.FC<IHeaderProps> = ({
+  children,
+  title,
+  withBackButton,
+}) => {
+  const handleBack = useCallback(() => {
+    history.back();
+  }, []);
+
   return (
     <Container>
       <ContentHeader>
-        <p>Goals</p>
+        {withBackButton && (
+          <ContainerBackButton onClick={handleBack}>
+            <MdChevronLeft size={32} color="#22223B" />
+          </ContainerBackButton>
+        )}
+        <p>{title}</p>
       </ContentHeader>
       {children}
     </Container>

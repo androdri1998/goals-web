@@ -7,8 +7,13 @@ export default createGlobalStyle`
     box-sizing: border-box;
     outline: 0;
     font-family: 'Roboto', sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  html, #root {
+    height: 100%;
   }
   body {
+    height: 100%;
     background: #fcfcfc;
     color: #312E38;
     -webkit-font-smoothing: antialiased;

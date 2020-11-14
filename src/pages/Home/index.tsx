@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Header>
+    <Header title="Goals">
       <Container>
         <ResumeGoals />
         <ContainerGoals>
