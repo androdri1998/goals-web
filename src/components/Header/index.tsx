@@ -16,7 +16,7 @@ const Header: React.FC<IHeaderProps> = ({
   withBackButton,
 }) => {
   const handleBack = useCallback(() => {
-    history.back();
+    history.goBack();
   }, []);
 
   return (

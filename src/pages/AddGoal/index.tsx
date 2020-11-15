@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 
 import { history } from '../../store';
+import routesConstants from '../../utils/routesConstants';
 
 import {
   Container,
@@ -24,7 +25,7 @@ const AddGoal: React.FC = () => {
   const [expectDate, setExpectDate] = useState<string>('');
 
   const handleBack = useCallback(() => {
-    history.back();
+    history.goBack();
   }, []);
 
   const handleTitle = useCallback(
@@ -47,6 +48,10 @@ const AddGoal: React.FC = () => {
     },
     [],
   );
+
+  const handleAddGoal = useCallback(() => {
+    history.push(routesConstants.FEEDBACK_ADD_GOAL);
+  }, []);
 
   return (
     <Header withBackButton title="Add goal">
@@ -82,7 +87,7 @@ const AddGoal: React.FC = () => {
         </ContainerInputs>
         <ContainerButtons>
           <BackButton onClick={handleBack}>Back</BackButton>
-          <AddButton>Add</AddButton>
+          <AddButton onClick={handleAddGoal}>Add</AddButton>
         </ContainerButtons>
       </Container>
     </Header>

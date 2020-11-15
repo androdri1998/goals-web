@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
 
 import appReducer, { IAppState } from './reducers/app.reducer';
 
@@ -7,9 +9,10 @@ export interface IReducerState {
   appReducer: IAppState;
 }
 
-const reducer = combineReducers({
-  route: routerReducer,
-  appReducer,
-});
+const reducer = (history: History<any>): any =>
+  combineReducers({
+    router: connectRouter(history),
+    appReducer,
+  });
 
 export default reducer;
