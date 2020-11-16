@@ -60,27 +60,27 @@ const AddGoal: React.FC = () => {
           <Input
             styles={{ marginBottom: 10 }}
             icon={MdFeaturedPlayList}
-            name="Título"
+            name="Title"
             type="text"
-            placeholder="Título"
+            placeholder="Title"
             value={title}
             onChange={handleTitle}
           />
           <Input
             styles={{ marginBottom: 10 }}
             icon={MdAttachMoney}
-            name="Valor esperado"
+            name="Expect value"
             type="number"
-            placeholder="Valor esperado"
+            placeholder="Expect value"
             value={expectValue}
             onChange={handleExpectValue}
           />
           <Input
             styles={{ marginBottom: 10 }}
             icon={MdAccessTime}
-            name="Quando irá alcançar"
+            name="When will it reach?"
             type="date"
-            placeholder="Quando irá alcançar"
+            placeholder="When will it reach?"
             value={expectDate}
             onChange={handleExpectDate}
           />

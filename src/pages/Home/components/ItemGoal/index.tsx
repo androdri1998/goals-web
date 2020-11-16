@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import routesConstants from '../../../../utils/routesConstants';
 
 import {
   Container,
@@ -15,10 +18,12 @@ import {
 const ItemGoal: React.FC = () => {
   return (
     <Container>
-      <ContainerTitle>
-        <Title>Title asdasd ada dadaasd ad ad a</Title>
-        <TitleValue>R$ 1.000,00</TitleValue>
-      </ContainerTitle>
+      <Link to={routesConstants.GOAL_DETAILS}>
+        <ContainerTitle>
+          <Title>My new Objective</Title>
+          <TitleValue>R$ 1.000,00</TitleValue>
+        </ContainerTitle>
+      </Link>
       <ContainerValue>
         <Value>R$ 20,00</Value>
         <ValueTotal>Saved</ValueTotal>

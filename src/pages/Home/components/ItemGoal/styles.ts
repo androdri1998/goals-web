@@ -9,6 +9,11 @@ export const Container = styled.section`
 
   border-radius: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  a {
+    text-decoration: none;
+    color: #22223b;
+  }
 `;
 
 export const ContainerTitle = styled.header`
