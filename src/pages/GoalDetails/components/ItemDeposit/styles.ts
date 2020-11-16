@@ -9,42 +9,19 @@ export const Container = styled.section`
 
   border-radius: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-  a {
-    width: 100%;
-    text-decoration: none;
-    color: #22223b;
-  }
 `;
 
-export const ContainerTitle = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-`;
-
-export const Title = styled.p`
+export const Description = styled.p`
   flex: 1;
-  font-size: 1.3em;
-  font-weight: 500;
+  font-size: 0.9em;
+  font-weight: 300;
 
   padding-right: 20px;
-`;
-
-export const TitleValue = styled.p`
-  font-size: 1em;
-  font-weight: 300;
-  padding: 5px;
-
-  border-radius: 5px;
-  font-weight: 500;
 `;
 
 export const ContainerValue = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
   padding: 5px;
 
   color: #fafafa;
@@ -86,8 +63,8 @@ export const Footer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
-  margin-top: 30px;
+  justify-content: flex-end;
+  margin-top: 20px;
 
   font-weight: 300;
 `;

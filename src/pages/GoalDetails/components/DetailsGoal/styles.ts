@@ -10,10 +10,13 @@ export const Container = styled.section`
 `;
 
 export const Title = styled.p`
-  font-size: 1.1em;
-  font-weight: 300;
+  margin-bottom: 20px;
+
   color: #f8f7ff;
-  margin-bottom: 10px;
+  font-family: sans-serif;
+
+  font-size: 1.6em;
+  font-weight: 600;
 `;
 
 export const Header = styled.header`
@@ -26,6 +29,7 @@ export const Header = styled.header`
     justify-content: space-between;
 
     p {
+      margin-bottom: 0;
       color: #f8f7ff;
       font-family: sans-serif;
 
@@ -70,18 +74,6 @@ export const Footer = styled.footer`
   flex-direction: column;
 
   margin-top: 50px;
-
-  div {
-    display: flex;
-    align-items: flex-end;
-
-    p {
-      color: #f8f7ff;
-      font-weight: 600;
-
-      font-size: 2em;
-    }
-  }
 
   .description {
     color: #f8f7ff;

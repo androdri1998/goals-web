@@ -4,6 +4,18 @@ export const Container = styled.main`
   padding: 0 10px;
 `;
 
+export const ContainerDeposits = styled.main`
+  padding: 0 10px;
+`;
+
+export const TitleListDeposit = styled.p`
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-size: 1.6em;
+  font-weight: 300;
+`;
+
 export const AddDepositBtn = styled.div`
   height: 56px;
   width: 56px;
