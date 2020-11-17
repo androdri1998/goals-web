@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 
 import { history } from '../../store';
+import { storeGoal } from '../../utils/storageFunctions';
 import routesConstants from '../../utils/routesConstants';
 
 import {
@@ -21,7 +22,7 @@ import {
 
 const AddGoal: React.FC = () => {
   const [title, setTitle] = useState<string>('');
-  const [expectValue, setExpectValue] = useState<string>('');
+  const [expectValue, setExpectValue] = useState<number>(0);
   const [expectDate, setExpectDate] = useState<string>('');
 
   const handleBack = useCallback(() => {
@@ -37,7 +38,8 @@ const AddGoal: React.FC = () => {
 
   const handleExpectValue = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
-      setExpectValue(event.currentTarget.value);
+      // eslint-disable-next-line radix
+      setExpectValue(parseInt(event.currentTarget.value));
     },
     [],
   );
@@ -50,8 +52,10 @@ const AddGoal: React.FC = () => {
   );
 
   const handleAddGoal = useCallback(() => {
+    const whenReach = new Date(expectDate);
+    storeGoal({ title, value: expectValue, whenReach });
     history.push(routesConstants.FEEDBACK_ADD_GOAL);
-  }, []);
+  }, [title, expectValue, expectDate]);
 
   return (
     <Header withBackButton title="Add goal">
