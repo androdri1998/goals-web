@@ -3,16 +3,16 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { History } from 'history';
 
-import appReducer, { IAppState } from './reducers/app.reducer';
+import goalsReducer, { IGoalsState } from './reducers/goals.reducer';
 
 export interface IReducerState {
-  appReducer: IAppState;
+  goalsReducer: IGoalsState;
 }
 
 const reducer = (history: History<any>): any =>
   combineReducers({
     router: connectRouter(history),
-    appReducer,
+    goalsReducer,
   });
 
 export default reducer;

@@ -37,3 +37,11 @@ export const AddGoalBtn = styled.div`
     font-size: 28px;
   }
 `;
+
+export const FeedbackNoGoals = styled.p`
+  text-align: center;
+  margin: 10px;
+
+  font-size: 1em;
+  font-weight: 500;
+`;

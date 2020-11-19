@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
 import ResumeGoals from './components/ResumeGoals';
 import ItemGoal from './components/ItemGoal';
 
-import { asyncExampleAction } from '../../store/actions/app.actions';
 import routesConstants from '../../utils/routesConstants';
+import { IReducerState } from '../../store/rootReducer';
+import { asyncListGoals } from '../../store/actions/goals.actions';
 
 import {
   Container,
   TitleListGoals,
   ContainerGoals,
   AddGoalBtn,
+  FeedbackNoGoals,
 } from './styles';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const goals = useSelector((state: IReducerState) => state.goalsReducer.goals);
 
   useEffect(() => {
-    dispatch(asyncExampleAction({ newText: 'novo teste' }));
+    dispatch(asyncListGoals());
   }, [dispatch]);
 
   return (
@@ -29,26 +32,12 @@ const Home: React.FC = () => {
         <ResumeGoals />
         <ContainerGoals>
           <TitleListGoals>Your goals</TitleListGoals>
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
-          <ItemGoal />
+          {goals.map(goal => (
+            <ItemGoal key={goal.id} />
+          ))}
+          {goals.length === 0 && (
+            <FeedbackNoGoals>No have goals registered</FeedbackNoGoals>
+          )}
         </ContainerGoals>
         <Link to={routesConstants.ADD_GOAL}>
           <AddGoalBtn>

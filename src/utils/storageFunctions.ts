@@ -1,19 +1,12 @@
-import { format } from 'date-fns';
-
 import { getItem, setItem } from './storageApi';
 import { keyStoreConstants } from './appConstants';
 import Goal from '../models/Goal';
 
-interface IStoreGoalDTO {
-  title: string;
-  value: number;
-  whenReach: Date;
+interface IStoreGoal {
+  goal: Goal;
 }
 
-export const storeGoal = (goalParams: IStoreGoalDTO): Goal => {
-  const whenReach = format(goalParams.whenReach, 'yyyy-MM-dd');
-  const goal = new Goal(goalParams.title, goalParams.value, whenReach);
-
+export const storeGoal = ({ goal }: IStoreGoal): Goal => {
   const goalsString = getItem({ key: keyStoreConstants.GOALS });
   const goals = goalsString ? JSON.parse(goalsString) : [];
 
@@ -21,4 +14,11 @@ export const storeGoal = (goalParams: IStoreGoalDTO): Goal => {
   setItem({ key: keyStoreConstants.GOALS, data: JSON.stringify(newGoals) });
 
   return goal;
+};
+
+export const listGoalsStored = (): Goal[] => {
+  const goalsString = getItem({ key: keyStoreConstants.GOALS });
+  const goals = goalsString ? JSON.parse(goalsString) : [];
+
+  return goals;
 };

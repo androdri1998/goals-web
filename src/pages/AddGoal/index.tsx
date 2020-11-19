@@ -4,13 +4,13 @@ import {
   MdAttachMoney,
   MdAccessTime,
 } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 
 import { history } from '../../store';
-import { storeGoal } from '../../utils/storageFunctions';
-import routesConstants from '../../utils/routesConstants';
+import { asyncAddGoal } from '../../store/actions/goals.actions';
 
 import {
   Container,
@@ -21,8 +21,9 @@ import {
 } from './styles';
 
 const AddGoal: React.FC = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState<string>('');
-  const [expectValue, setExpectValue] = useState<number>(0);
+  const [expectValue, setExpectValue] = useState<string>('');
   const [expectDate, setExpectDate] = useState<string>('');
 
   const handleBack = useCallback(() => {
@@ -38,8 +39,7 @@ const AddGoal: React.FC = () => {
 
   const handleExpectValue = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
-      // eslint-disable-next-line radix
-      setExpectValue(parseInt(event.currentTarget.value));
+      setExpectValue(event.currentTarget.value);
     },
     [],
   );
@@ -52,10 +52,11 @@ const AddGoal: React.FC = () => {
   );
 
   const handleAddGoal = useCallback(() => {
-    const whenReach = new Date(expectDate);
-    storeGoal({ title, value: expectValue, whenReach });
-    history.push(routesConstants.FEEDBACK_ADD_GOAL);
-  }, [title, expectValue, expectDate]);
+    const whenReach = new Date(`${expectDate} 00:00:00`);
+    dispatch(
+      asyncAddGoal({ title, value: parseFloat(expectValue), whenReach }),
+    );
+  }, [title, expectValue, expectDate, dispatch]);
 
   return (
     <Header withBackButton title="Add goal">

@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IDeposit {
   description: string;
@@ -6,6 +7,8 @@ interface IDeposit {
 }
 
 export default class Goal {
+  public id: string;
+
   public title: string;
 
   public value: number;
@@ -24,11 +27,14 @@ export default class Goal {
     whenReach: string,
     deposits?: IDeposit[],
   ) {
+    this.id = uuidv4();
     this.title = title;
-    this.value = value;
-    this.whenReach = whenReach;
+    this.value = value * 100;
     this.deposits = deposits || [];
-    this.createdAt = format(new Date(), 'yyyy-MM-yy');
-    this.updatedAt = format(new Date(), 'yyyy-MM-yy');
+
+    const currentDate = format(new Date(), 'yyyy-MM-yy HH:mm:ss');
+    this.whenReach = whenReach;
+    this.createdAt = currentDate;
+    this.updatedAt = currentDate;
   }
 }
