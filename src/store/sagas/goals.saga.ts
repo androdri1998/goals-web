@@ -1,9 +1,16 @@
 import { put, takeEvery, select } from 'redux-saga/effects';
 import { format } from 'date-fns';
 
-import goalsActions, { changeGoals } from '../actions/goals.actions';
+import goalsActions, {
+  changeGoals,
+  changeGoal,
+} from '../actions/goals.actions';
 import { IReducerState } from '../rootReducer';
-import { storeGoal, listGoalsStored } from '../../utils/storageFunctions';
+import {
+  storeGoal,
+  listGoalsStored,
+  listGoalStoredById,
+} from '../../utils/storageFunctions';
 import routesConstants from '../../utils/routesConstants';
 import { history } from '../index';
 import Goal from '../../models/Goal';
@@ -37,8 +44,21 @@ function* asyncListGoals() {
   yield put(changeGoals({ goals }));
 }
 
+interface IAsyncListGoalDTO {
+  type: string;
+  payload: {
+    goalId: string;
+  };
+}
+
+function* asyncListGoal({ payload: { goalId } }: IAsyncListGoalDTO) {
+  const goal = listGoalStoredById({ id: goalId });
+  yield put(changeGoal({ goal: goal || null }));
+}
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function* goalsSaga() {
   yield takeEvery(goalsActions.ASYNC_CREATE_GOAL, asyncCreateGoal);
   yield takeEvery(goalsActions.ASYNC_LIST_GOALS, asyncListGoals);
+  yield takeEvery(goalsActions.ASYNC_LIST_GOAL, asyncListGoal);
 }

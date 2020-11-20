@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
+  flex: 1;
   padding: 0 10px;
 `;
 
@@ -36,4 +37,12 @@ export const AddDepositBtn = styled.div`
   i {
     font-size: 28px;
   }
+`;
+
+export const FeedbackNoDeposit = styled.p`
+  text-align: center;
+  margin: 10px;
+
+  font-size: 1em;
+  font-weight: 500;
 `;

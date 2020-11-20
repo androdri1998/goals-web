@@ -4,10 +4,12 @@ import Goal from '../../models/Goal';
 
 export interface IGoalsState {
   goals: Goal[];
+  goal: Goal | null;
 }
 
 const initialState: IGoalsState = {
   goals: [],
+  goal: null,
 };
 
 interface IActionDTO {
@@ -22,6 +24,8 @@ const goalsReducer = (
   switch (action.type) {
     case goalsActions.CHANGE_GOALS:
       return { ...state, goals: action.payload.goals };
+    case goalsActions.CHANGE_GOAL:
+      return { ...state, goal: action.payload.goal };
     default:
       return state;
   }

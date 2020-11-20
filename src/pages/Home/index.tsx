@@ -29,11 +29,11 @@ const Home: React.FC = () => {
   return (
     <Header title="Goals">
       <Container>
-        <ResumeGoals />
+        <ResumeGoals goals={goals} />
         <ContainerGoals>
           <TitleListGoals>Your goals</TitleListGoals>
           {goals.map(goal => (
-            <ItemGoal key={goal.id} />
+            <ItemGoal goal={goal} key={goal.id} />
           ))}
           {goals.length === 0 && (
             <FeedbackNoGoals>No have goals registered</FeedbackNoGoals>

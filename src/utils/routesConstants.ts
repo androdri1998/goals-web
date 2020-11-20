@@ -13,5 +13,5 @@ export default {
   FEEDBACK_ADD_GOAL: '/success-add-goal',
   ADD_DEPOSIT: '/add-deposit',
   FEEDBACK_ADD_DEPOSIT: '/success-add-deposit',
-  GOAL_DETAILS: '/id/details',
+  GOAL_DETAILS: '/:goalId/details',
 } as IRoutesConstants;

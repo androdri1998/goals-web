@@ -22,3 +22,18 @@ export const listGoalsStored = (): Goal[] => {
 
   return goals;
 };
+
+interface IListGoalStoredByIdDTO {
+  id: string;
+}
+
+export const listGoalStoredById = ({
+  id,
+}: IListGoalStoredByIdDTO): Goal | null => {
+  const goalsString = getItem({ key: keyStoreConstants.GOALS });
+  const goals = goalsString ? JSON.parse(goalsString) : [];
+
+  const goal = goals.find((findGoal: Goal) => findGoal.id === id);
+
+  return goal || null;
+};

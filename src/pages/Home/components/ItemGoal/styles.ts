@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components';
 
 export const Container = styled.section`
@@ -62,7 +63,11 @@ export const ValueTotal = styled.div`
   margin-left: 3px;
 `;
 
-export const ProgressBar = styled.div`
+interface IProgressBarProps {
+  percentage: number;
+}
+
+export const ProgressBar = styled.div<IProgressBarProps>`
   width: 100%;
   height: 15px;
   margin: 10px 0;
@@ -75,7 +80,7 @@ export const ProgressBar = styled.div`
     justify-content: flex-end;
 
     height: 100%;
-    width: 20%;
+    width: ${props => `${props.percentage}%` || '0%'};
 
     background: #4a4e69;
     border-radius: 10px;
