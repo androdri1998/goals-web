@@ -13,8 +13,10 @@ export const Container = styled.section`
 
 export const Description = styled.p`
   flex: 1;
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-weight: 300;
+
+  margin: 5px 0;
 
   padding-right: 20px;
 `;
@@ -37,26 +39,6 @@ export const Value = styled.p`
 export const ValueTotal = styled.div`
   font-size: 1em;
   margin-left: 3px;
-`;
-
-export const ProgressBar = styled.div`
-  width: 100%;
-  height: 15px;
-  margin: 10px 0;
-
-  border-radius: 10px;
-  background: #f2e9e4;
-
-  div {
-    display: flex;
-    justify-content: flex-end;
-
-    height: 100%;
-    width: 20%;
-
-    background: #4a4e69;
-    border-radius: 10px;
-  }
 `;
 
 export const Footer = styled.div`

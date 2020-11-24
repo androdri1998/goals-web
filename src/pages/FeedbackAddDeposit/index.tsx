@@ -9,8 +9,8 @@ import { history } from '../../store';
 import { Container, ContainerCheck, Description, HomeButton } from './styles';
 
 const FeedbackAddDeposit: React.FC = () => {
-  const handleGoDetails = useCallback(() => {
-    history.push(routesConstants.GOAL_DETAILS);
+  const handleGoHome = useCallback(() => {
+    history.push(routesConstants.HOME);
   }, []);
 
   return (
@@ -20,7 +20,7 @@ const FeedbackAddDeposit: React.FC = () => {
           <MdCheck size={100} color="#F2E9E4" />
         </ContainerCheck>
         <Description>Deposit added with success</Description>
-        <HomeButton onClick={handleGoDetails}>Back to details</HomeButton>
+        <HomeButton onClick={handleGoHome}>Back to Home</HomeButton>
       </Container>
     </Header>
   );

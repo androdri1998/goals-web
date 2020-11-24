@@ -1,28 +1,46 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { format } from 'date-fns';
+
+import { formatCurrency } from '../../../../utils/helpers';
 
 import {
   Container,
   Description,
   Value,
   ValueTotal,
-  ProgressBar,
   Footer,
   ContainerValue,
 } from './styles';
 
-const ItemDeposit: React.FC = () => {
+interface IDeposit {
+  id: string;
+  description: string;
+  value: number;
+  createdAt: string;
+}
+
+interface IItemDepositProps {
+  deposit: IDeposit;
+}
+
+const ItemDeposit: React.FC<IItemDepositProps> = ({ deposit }) => {
+  const currencyDeposit = useMemo(() => {
+    return formatCurrency({ value: deposit.value });
+  }, [deposit.value]);
+
+  const createdAt = useMemo(() => {
+    return format(new Date(deposit.createdAt), "dd/MM/yyyy HH:mm 'horas'");
+  }, [deposit.createdAt]);
+
   return (
     <Container>
       <ContainerValue>
-        <Value>R$ 20,00</Value>
+        <Value>{currencyDeposit}</Value>
         <ValueTotal>Saved</ValueTotal>
       </ContainerValue>
-      <ProgressBar>
-        <div />
-      </ProgressBar>
-      <Description>My new Objective</Description>
+      <Description>{deposit.description}</Description>
       <Footer>
-        <p>00/00/0000</p>
+        <p>{createdAt}</p>
       </Footer>
     </Container>
   );

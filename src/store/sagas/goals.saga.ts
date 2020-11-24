@@ -1,5 +1,6 @@
 import { put, takeEvery, select } from 'redux-saga/effects';
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 import goalsActions, {
   changeGoals,
@@ -10,10 +11,11 @@ import {
   storeGoal,
   listGoalsStored,
   listGoalStoredById,
+  upadateGoals,
 } from '../../utils/storageFunctions';
 import routesConstants from '../../utils/routesConstants';
 import { history } from '../index';
-import Goal from '../../models/Goal';
+import Goal, { IDeposit } from '../../models/Goal';
 
 interface IAsyncAddGoalDTO {
   type: string;
@@ -38,6 +40,35 @@ function* asyncCreateGoal({
 
   history.push(routesConstants.FEEDBACK_ADD_GOAL);
 }
+interface IAsyncAddDepositDTO {
+  type: string;
+  payload: { description: string; value: number; goalId: string };
+}
+
+function* asyncCreateDeposit({
+  payload: { goalId, value, description },
+}: IAsyncAddDepositDTO) {
+  const createdAt = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+  const deposit = { id: uuidv4(), value: value * 100, description, createdAt };
+
+  const goalStored = listGoalStoredById({ id: goalId }) as Goal;
+  const currentDeposits = goalStored ? goalStored.deposits : [];
+
+  const newDeposits: IDeposit[] = [deposit, ...currentDeposits];
+  goalStored.deposits = newDeposits;
+
+  const goals = listGoalsStored();
+
+  const goalFoundIndex = goals.findIndex((goal: Goal) => goal.id === goalId);
+
+  goals[goalFoundIndex] = goalStored;
+
+  upadateGoals({ goals });
+
+  yield put(changeGoals({ goals }));
+  yield put(changeGoal({ goal: goalStored }));
+  history.push(routesConstants.FEEDBACK_ADD_DEPOSIT);
+}
 
 function* asyncListGoals() {
   const goals = listGoalsStored();
@@ -59,6 +90,7 @@ function* asyncListGoal({ payload: { goalId } }: IAsyncListGoalDTO) {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function* goalsSaga() {
   yield takeEvery(goalsActions.ASYNC_CREATE_GOAL, asyncCreateGoal);
+  yield takeEvery(goalsActions.ASYNC_CREATE_DEPOSIT, asyncCreateDeposit);
   yield takeEvery(goalsActions.ASYNC_LIST_GOALS, asyncListGoals);
   yield takeEvery(goalsActions.ASYNC_LIST_GOAL, asyncListGoal);
 }

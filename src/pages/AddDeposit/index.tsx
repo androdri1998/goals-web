@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { MdFeaturedPlayList, MdAttachMoney } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 
 import { history } from '../../store';
-import routesConstants from '../../utils/routesConstants';
+import { asyncAddDeposit } from '../../store/actions/goals.actions';
 
 import {
   Container,
@@ -15,7 +17,14 @@ import {
   AddButton,
 } from './styles';
 
+interface IParams {
+  goalId: string;
+}
+
 const AddDeposit: React.FC = () => {
+  const dispatch = useDispatch();
+  const params = useParams<IParams>();
+
   const [description, setDescription] = useState<string>('');
   const [valueDeposit, setValueDeposit] = useState<string>('');
 
@@ -38,8 +47,14 @@ const AddDeposit: React.FC = () => {
   );
 
   const handleAddDeposit = useCallback(() => {
-    history.push(routesConstants.FEEDBACK_ADD_DEPOSIT);
-  }, []);
+    dispatch(
+      asyncAddDeposit({
+        goalId: params.goalId,
+        description,
+        value: parseFloat(valueDeposit),
+      }),
+    );
+  }, [dispatch, description, valueDeposit, params.goalId]);
 
   return (
     <Header withBackButton title="Add deposit">
@@ -66,7 +81,12 @@ const AddDeposit: React.FC = () => {
         </ContainerInputs>
         <ContainerButtons>
           <BackButton onClick={handleBack}>Back</BackButton>
-          <AddButton onClick={handleAddDeposit}>Add</AddButton>
+          <AddButton
+            disabled={!description || !valueDeposit}
+            onClick={handleAddDeposit}
+          >
+            Add
+          </AddButton>
         </ContainerButtons>
       </Container>
     </Header>

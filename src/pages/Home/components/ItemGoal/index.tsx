@@ -29,12 +29,29 @@ const ItemGoal: React.FC<IItemGoalProps> = ({ goal }) => {
   }, [goal.value]);
 
   const currencyDepositsGoal = useMemo(() => {
+    if (goal && goal.deposits && goal.value) {
+      const totalValueDeposits = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      return formatCurrency({ value: totalValueDeposits });
+    }
+
     return formatCurrency({ value: 0 });
-  }, []);
+  }, [goal]);
 
   const percentageToReachGoal = useMemo(() => {
+    if (goal && goal.deposits && goal.value) {
+      const totalValueDeposits = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      const percentage = (totalValueDeposits / goal.value) * 100;
+      return percentage;
+    }
+
     return 0;
-  }, []);
+  }, [goal]);
 
   const deadlineToReachGoal = useMemo(() => {
     return format(new Date(goal.whenReach), 'dd/MM/yyyy');

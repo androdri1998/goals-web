@@ -18,8 +18,18 @@ interface IResumeGoalsProps {
 
 const ResumeGoals: React.FC<IResumeGoalsProps> = ({ goals }) => {
   const currencyDepositsGoals = useMemo(() => {
-    return formatCurrency({ value: 0 });
-  }, []);
+    let totalDeposit = 0;
+    // eslint-disable-next-line array-callback-return
+    goals.map(goal => {
+      const totalDepositGoal = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      totalDeposit += totalDepositGoal;
+    });
+
+    return formatCurrency({ value: totalDeposit });
+  }, [goals]);
 
   const currencyTotalGoals = useMemo(() => {
     const totalValueGoals = goals.reduce((acumulador, goal) => {
@@ -30,12 +40,40 @@ const ResumeGoals: React.FC<IResumeGoalsProps> = ({ goals }) => {
   }, [goals]);
 
   const percentageToReachAllGoals = useMemo(() => {
-    return 0;
-  }, []);
+    let totalDeposit = 0;
+    // eslint-disable-next-line array-callback-return
+    goals.map(goal => {
+      const totalDepositGoal = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      totalDeposit += totalDepositGoal;
+    });
+
+    const totalValueGoals = goals.reduce((acumulador, goal) => {
+      return acumulador + goal.value;
+    }, 0);
+
+    const percentage = (totalDeposit / totalValueGoals) * 100;
+
+    return percentage;
+  }, [goals]);
 
   const totalGoalsReached = useMemo(() => {
-    return 0;
-  }, []);
+    let totalRached = 0;
+    // eslint-disable-next-line array-callback-return
+    goals.map(goal => {
+      const totalDepositGoal = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      if (totalDepositGoal >= goal.value) {
+        totalRached += 1;
+      }
+    });
+
+    return totalRached;
+  }, [goals]);
 
   return (
     <Container>

@@ -16,6 +16,15 @@ export const storeGoal = ({ goal }: IStoreGoal): Goal => {
   return goal;
 };
 
+interface IStoreGoals {
+  goals: Goal[];
+}
+
+export const upadateGoals = ({ goals }: IStoreGoals): Goal[] => {
+  setItem({ key: keyStoreConstants.GOALS, data: JSON.stringify(goals) });
+  return goals;
+};
+
 export const listGoalsStored = (): Goal[] => {
   const goalsString = getItem({ key: keyStoreConstants.GOALS });
   const goals = goalsString ? JSON.parse(goalsString) : [];
