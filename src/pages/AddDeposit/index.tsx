@@ -1,13 +1,17 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { MdFeaturedPlayList, MdAttachMoney } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 
 import { history } from '../../store';
-import { asyncAddDeposit } from '../../store/actions/goals.actions';
+import {
+  asyncAddDeposit,
+  asyncListGoal,
+} from '../../store/actions/goals.actions';
+import { IReducerState } from '../../store/rootReducer';
 
 import {
   Container,
@@ -23,10 +27,15 @@ interface IParams {
 
 const AddDeposit: React.FC = () => {
   const dispatch = useDispatch();
+  const goal = useSelector((state: IReducerState) => state.goalsReducer.goal);
   const params = useParams<IParams>();
 
   const [description, setDescription] = useState<string>('');
   const [valueDeposit, setValueDeposit] = useState<string>('');
+
+  useEffect(() => {
+    dispatch(asyncListGoal({ goalId: params.goalId }));
+  }, [params, dispatch]);
 
   const handleBack = useCallback(() => {
     history.goBack();
@@ -56,6 +65,29 @@ const AddDeposit: React.FC = () => {
     );
   }, [dispatch, description, valueDeposit, params.goalId]);
 
+  const currencyGoal = useMemo(() => {
+    if (goal) {
+      return goal.value;
+    }
+    return 0;
+  }, [goal]);
+
+  const currencyDepositsGoal = useMemo(() => {
+    if (goal && goal.deposits && goal.value) {
+      const totalValueDeposits = goal.deposits.reduce((acumulador, deposit) => {
+        return acumulador + deposit.value;
+      }, 0);
+
+      return totalValueDeposits;
+    }
+
+    return 0;
+  }, [goal]);
+
+  const maxDeposit = useMemo(() => {
+    return (currencyGoal - currencyDepositsGoal) / 100;
+  }, [currencyDepositsGoal, currencyGoal]);
+
   return (
     <Header withBackButton title="Add deposit">
       <Container>
@@ -77,12 +109,17 @@ const AddDeposit: React.FC = () => {
             placeholder="Deposit value"
             value={valueDeposit}
             onChange={handleValueDeposit}
+            max={maxDeposit}
           />
         </ContainerInputs>
         <ContainerButtons>
           <BackButton onClick={handleBack}>Back</BackButton>
           <AddButton
-            disabled={!description || !valueDeposit}
+            disabled={
+              !description ||
+              !valueDeposit ||
+              parseFloat(valueDeposit) > maxDeposit
+            }
             onClick={handleAddDeposit}
           >
             Add

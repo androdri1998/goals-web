@@ -86,7 +86,11 @@ const DetailsGoal: React.FC<IDetailsGoal> = ({ goal = {} }) => {
       </Content>
       <Footer>
         <span className="description">{`${amountDeposits} Deposits`}</span>
-        <span className="description">{`Until ${deadlineToReachGoal}`}</span>
+        {percentageToReachGoal === 100 ? (
+          <span className="description">Goal already reached</span>
+        ) : (
+          <span className="description">{`Until ${deadlineToReachGoal}`}</span>
+        )}
       </Footer>
     </Container>
   );

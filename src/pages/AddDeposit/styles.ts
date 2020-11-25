@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
@@ -41,6 +41,7 @@ export const AddButton = styled.button`
   height: 40px;
   padding: 10px;
   margin-left: 5px;
+  cursor: default;
 
   font-size: 1em;
   color: white;
@@ -49,8 +50,19 @@ export const AddButton = styled.button`
   background: #176191;
   font-weight: 500;
 
+  ${props =>
+    props.disabled &&
+    css`
+      background: #999;
+    `}
+
   &:hover {
     transition: 0.6s background;
-    background: ${shade(0.2, '#176191')};
+    ${props =>
+      !props.disabled &&
+      css`
+        cursor: pointer;
+        background: ${shade(0.2, '#176191')};
+      `}
   }
 `;

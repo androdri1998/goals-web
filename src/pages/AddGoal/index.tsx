@@ -92,7 +92,12 @@ const AddGoal: React.FC = () => {
         </ContainerInputs>
         <ContainerButtons>
           <BackButton onClick={handleBack}>Back</BackButton>
-          <AddButton onClick={handleAddGoal}>Add</AddButton>
+          <AddButton
+            disabled={!title || !expectValue || !expectDate}
+            onClick={handleAddGoal}
+          >
+            Add
+          </AddButton>
         </ContainerButtons>
       </Container>
     </Header>
