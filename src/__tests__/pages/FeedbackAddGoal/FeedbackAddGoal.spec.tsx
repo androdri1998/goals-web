@@ -3,14 +3,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import FeedbackAddGoal from '../../../pages/FeedbackAddGoal';
 
-jest.mock('../../../store', () => {
-  return {
-    history: {
-      // eslint-disable-next-line no-console
-      push: () => console.log('Validate push'),
-    },
-  };
-});
+jest.mock('../../../store');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { history } = require('../../../store');
 
 describe('FeedbackAddGoal page', () => {
   it('should be able to render FeedbackAddGoal page', () => {
@@ -21,13 +16,15 @@ describe('FeedbackAddGoal page', () => {
   });
 
   it('should be able to go Home page', () => {
+    const mockPush = jest.fn();
+    history.push.mockImplementation(mockPush);
+
     const { getByTestId } = render(<FeedbackAddGoal />);
 
-    const consoleSpy = jest.spyOn(console, 'log');
     const homeButton = getByTestId('home-button');
 
     fireEvent.click(homeButton);
 
-    expect(consoleSpy).toBeCalledWith('Validate push');
+    expect(mockPush).toBeCalled();
   });
 });

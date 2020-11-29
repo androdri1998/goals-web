@@ -47,7 +47,10 @@ describe('AddGoal page', () => {
   const setState = jest.fn();
 
   beforeEach(() => {
-    useStateMock.mockImplementation((init: any) => [init, setState]);
+    useStateMock.mockImplementation((init: any) => [
+      'value-to-able-click',
+      setState,
+    ]);
   });
 
   it('should be able to render AddGoal page', () => {
@@ -97,5 +100,14 @@ describe('AddGoal page', () => {
     fireEvent.click(backButton);
 
     expect(mockGoBack).toBeCalled();
+  });
+
+  it('should be able to click add button', () => {
+    const { getByTestId } = render(<AddGoal />);
+
+    const addButton = getByTestId('add-button');
+    fireEvent.click(addButton);
+
+    expect(mockUseDispatch).toBeCalled();
   });
 });
