@@ -91,8 +91,11 @@ const AddGoal: React.FC = () => {
           />
         </ContainerInputs>
         <ContainerButtons>
-          <BackButton onClick={handleBack}>Back</BackButton>
+          <BackButton data-testid="back-button" onClick={handleBack}>
+            Back
+          </BackButton>
           <AddButton
+            data-testid="add-button"
             disabled={!title || !expectValue || !expectDate}
             onClick={handleAddGoal}
           >
