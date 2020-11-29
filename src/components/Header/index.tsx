@@ -23,7 +23,7 @@ const Header: React.FC<IHeaderProps> = ({
     <Container>
       <ContentHeader>
         {withBackButton && (
-          <ContainerBackButton onClick={handleBack}>
+          <ContainerBackButton data-testid="header" onClick={handleBack}>
             <MdChevronLeft size={32} color="#22223B" />
           </ContainerBackButton>
         )}

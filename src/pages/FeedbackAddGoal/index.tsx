@@ -19,7 +19,9 @@ const FeedbackAddGoal: React.FC = () => {
           <MdCheck size={100} color="#F2E9E4" />
         </ContainerCheck>
         <Description>Goal added with success</Description>
-        <HomeButton onClick={handleGoHome}>Back to home</HomeButton>
+        <HomeButton data-testid="home-button" onClick={handleGoHome}>
+          Back to home
+        </HomeButton>
       </Container>
     </Header>
   );
