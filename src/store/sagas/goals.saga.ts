@@ -90,6 +90,34 @@ function* asyncCreateDeposit({
   history.push(routesConstants.FEEDBACK_ADD_DEPOSIT);
 }
 
+interface IAsyncRemoveDepositDTO {
+  type: string;
+  payload: { depositId: string; goalId: string };
+}
+
+function* asyncRemoveDeposit({
+  payload: { depositId, goalId },
+}: IAsyncRemoveDepositDTO) {
+  const goalStored = listGoalStoredById({ id: goalId }) as Goal;
+  const currentDeposits = goalStored ? goalStored.deposits : [];
+
+  const newDeposits = currentDeposits.filter(
+    deposit => deposit.id !== depositId,
+  );
+  goalStored.deposits = newDeposits;
+
+  const goals = listGoalsStored();
+
+  const goalFoundIndex = goals.findIndex((goal: Goal) => goal.id === goalId);
+
+  goals[goalFoundIndex] = goalStored;
+
+  upadateGoals({ goals });
+
+  yield put(changeGoals({ goals }));
+  yield put(changeGoal({ goal: goalStored }));
+}
+
 function* asyncListGoals() {
   const goals = listGoalsStored();
   yield put(changeGoals({ goals }));
@@ -114,4 +142,5 @@ export default function* goalsSaga() {
   yield takeEvery(goalsActions.ASYNC_LIST_GOALS, asyncListGoals);
   yield takeEvery(goalsActions.ASYNC_LIST_GOAL, asyncListGoal);
   yield takeEvery(goalsActions.ASYNC_DELETE_GOAL, asyncRemoveGoal);
+  yield takeEvery(goalsActions.ASYNC_DELETE_DEPOSIT, asyncRemoveDeposit);
 }

@@ -82,7 +82,11 @@ const GoalDetails: React.FC = () => {
             {goal &&
               goal.deposits &&
               goal.deposits.map(deposit => (
-                <ItemDeposit deposit={deposit} key={deposit.id} />
+                <ItemDeposit
+                  goalId={goal.id}
+                  deposit={deposit}
+                  key={deposit.id}
+                />
               ))}
             {goal && goal.deposits.length === 0 && (
               <FeedbackNoDeposit>No have deposits registered</FeedbackNoDeposit>
@@ -101,9 +105,11 @@ const GoalDetails: React.FC = () => {
       </Header>
       {showModalToConfirmRemoveGoal && (
         <ModalConfirmation
-          message="Você deseja mesmo excluir esse objetivo?"
+          message="Você deseja excluir esse objetivo?"
           onCancel={handleOnCancel}
           onAccept={handleOnAccept}
+          acceptText="Sim"
+          cancelText="Voltar"
         />
       )}
     </>

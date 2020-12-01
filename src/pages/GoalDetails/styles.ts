@@ -2,16 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   flex: 1;
-  padding: 0 10px;
 `;
 
-export const ContainerDeposits = styled.main`
-  padding: 0 10px;
-`;
+export const ContainerDeposits = styled.main``;
 
 export const TitleListDeposit = styled.p`
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 20px;
 
   font-size: 1.6em;
   font-weight: 300;

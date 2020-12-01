@@ -105,7 +105,7 @@ describe('DetailsGoal component', () => {
       />,
     );
 
-    const deleteGoalBtn = getByTestId('delete-btn');
+    const deleteGoalBtn = getByTestId('delete-btn-goal');
     fireEvent.click(deleteGoalBtn);
 
     expect(mockHandleOpenDeleteGoal).toBeCalled();

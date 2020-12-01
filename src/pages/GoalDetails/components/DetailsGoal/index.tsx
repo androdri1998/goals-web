@@ -82,7 +82,7 @@ const DetailsGoal: React.FC<IDetailsGoal> = ({
         <ContainerTitle>
           <Title>{goal ? goal.title : ''}</Title>
           <ContainerIcon
-            data-testid="delete-btn"
+            data-testid="delete-btn-goal"
             onClick={handleOpenDeleteGoal}
           >
             <MdDelete color="#f8f7ff" size={32} />

@@ -4,6 +4,7 @@ interface IGoalsActions {
   ASYNC_CREATE_GOAL: string;
   ASYNC_DELETE_GOAL: string;
   ASYNC_CREATE_DEPOSIT: string;
+  ASYNC_DELETE_DEPOSIT: string;
   ASYNC_LIST_GOALS: string;
   CHANGE_GOALS: string;
   ASYNC_LIST_GOAL: string;
@@ -14,6 +15,7 @@ const goalsActions = {
   ASYNC_CREATE_GOAL: '@goals/ASYNC_CREATE_GOAL',
   ASYNC_DELETE_GOAL: '@goals/ASYNC_DELETE_GOAL',
   ASYNC_CREATE_DEPOSIT: '@goals/ASYNC_CREATE_DEPOSIT',
+  ASYNC_DELETE_DEPOSIT: '@goals/ASYNC_DELETE_DEPOSIT',
   ASYNC_LIST_GOALS: '@goals/ASYNC_LIST_GOALS',
   CHANGE_GOALS: '@goals/CHANGE_GOALS',
   ASYNC_LIST_GOAL: '@goals/ASYNC_LIST_GOAL',
@@ -84,6 +86,27 @@ export const asyncAddDeposit = ({
 }: IAsyncAddDepositDTO): IAsyncAddDepositResponse => ({
   type: goalsActions.ASYNC_CREATE_DEPOSIT,
   payload: { description, value, goalId },
+});
+
+interface IAsyncRemoveDepositResponse {
+  type: string;
+  payload: {
+    depositId: string;
+    goalId: string;
+  };
+}
+
+interface IAsyncRemoveDepositDTO {
+  depositId: string;
+  goalId: string;
+}
+
+export const asyncRemoveDeposit = ({
+  depositId,
+  goalId,
+}: IAsyncRemoveDepositDTO): IAsyncRemoveDepositResponse => ({
+  type: goalsActions.ASYNC_DELETE_DEPOSIT,
+  payload: { depositId, goalId },
 });
 
 interface IAsyncListGoalsResponse {

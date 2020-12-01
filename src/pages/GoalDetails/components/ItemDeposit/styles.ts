@@ -5,6 +5,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
+  margin: 0 20px;
   margin-bottom: 20px;
 
   border-radius: 20px;
@@ -49,4 +50,24 @@ export const Footer = styled.div`
   margin-top: 20px;
 
   font-weight: 300;
+`;
+
+export const ContainerHeader = styled.header`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const ContainerIcon = styled.button`
+  cursor: pointer;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 50%;
+  background: transparent;
+
+  &:hover {
+    transition: 0.6s;
+    background: rgba(0, 0, 0, 0.1);
+  }
 `;
