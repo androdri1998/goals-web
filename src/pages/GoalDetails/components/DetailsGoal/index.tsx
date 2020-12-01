@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { format } from 'date-fns';
+import { MdDelete } from 'react-icons/md';
 
 import Goal from '../../../../models/Goal';
+
 import { formatCurrency } from '../../../../utils/helpers';
 
 import {
@@ -11,13 +13,19 @@ import {
   Footer,
   Content,
   Title,
+  ContainerTitle,
+  ContainerIcon,
 } from './styles';
 
 interface IDetailsGoal {
   goal: Goal;
+  handleOpenDeleteGoal?: () => void;
 }
 
-const DetailsGoal: React.FC<IDetailsGoal> = ({ goal = {} }) => {
+const DetailsGoal: React.FC<IDetailsGoal> = ({
+  goal,
+  handleOpenDeleteGoal,
+}) => {
   const currencyGoal = useMemo(() => {
     if (goal) {
       return formatCurrency({ value: goal.value || 0 });
@@ -71,7 +79,15 @@ const DetailsGoal: React.FC<IDetailsGoal> = ({ goal = {} }) => {
   return (
     <Container>
       <Header>
-        {goal && <Title>{goal.title}</Title>}
+        <ContainerTitle>
+          <Title>{goal ? goal.title : ''}</Title>
+          <ContainerIcon
+            data-testid="delete-btn"
+            onClick={handleOpenDeleteGoal}
+          >
+            <MdDelete color="#f8f7ff" size={32} />
+          </ContainerIcon>
+        </ContainerTitle>
         <div>
           <p>{currencyDepositsGoal}</p>
           <p>{currencyGoal}</p>

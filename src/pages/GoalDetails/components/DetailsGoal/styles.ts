@@ -11,8 +11,6 @@ export const Container = styled.section`
 `;
 
 export const Title = styled.p`
-  margin-bottom: 20px;
-
   color: #f8f7ff;
   font-family: sans-serif;
 
@@ -85,5 +83,26 @@ export const Footer = styled.footer`
     font-size: 1.2em;
 
     font-weight: 500;
+  }
+`;
+
+export const ContainerTitle = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+`;
+
+export const ContainerIcon = styled.button`
+  cursor: pointer;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 50%;
+  background: transparent;
+
+  &:hover {
+    transition: 0.6s;
+    background: rgba(255, 255, 255, 0.3);
   }
 `;

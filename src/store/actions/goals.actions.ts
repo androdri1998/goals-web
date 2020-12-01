@@ -2,6 +2,7 @@ import Goal from '../../models/Goal';
 
 interface IGoalsActions {
   ASYNC_CREATE_GOAL: string;
+  ASYNC_DELETE_GOAL: string;
   ASYNC_CREATE_DEPOSIT: string;
   ASYNC_LIST_GOALS: string;
   CHANGE_GOALS: string;
@@ -11,6 +12,7 @@ interface IGoalsActions {
 
 const goalsActions = {
   ASYNC_CREATE_GOAL: '@goals/ASYNC_CREATE_GOAL',
+  ASYNC_DELETE_GOAL: '@goals/ASYNC_DELETE_GOAL',
   ASYNC_CREATE_DEPOSIT: '@goals/ASYNC_CREATE_DEPOSIT',
   ASYNC_LIST_GOALS: '@goals/ASYNC_LIST_GOALS',
   CHANGE_GOALS: '@goals/CHANGE_GOALS',
@@ -40,6 +42,24 @@ export const asyncAddGoal = ({
 }: IAsyncAddGoalDTO): IAsyncAddGoalResponse => ({
   type: goalsActions.ASYNC_CREATE_GOAL,
   payload: { title, value, whenReach },
+});
+
+interface IAsyncRemoveGoalResponse {
+  type: string;
+  payload: {
+    goalId: string;
+  };
+}
+
+interface IAsyncRemoveGoalDTO {
+  goalId: string;
+}
+
+export const asyncRemoveGoal = ({
+  goalId,
+}: IAsyncRemoveGoalDTO): IAsyncRemoveGoalResponse => ({
+  type: goalsActions.ASYNC_DELETE_GOAL,
+  payload: { goalId },
 });
 
 interface IAsyncAddDepositResponse {

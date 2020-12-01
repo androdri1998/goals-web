@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
 import ResumeGoals from './components/ResumeGoals';
@@ -8,7 +8,6 @@ import ItemGoal from './components/ItemGoal';
 
 import routesConstants from '../../utils/routesConstants';
 import { IReducerState } from '../../store/rootReducer';
-import { asyncListGoals } from '../../store/actions/goals.actions';
 
 import {
   Container,
@@ -19,12 +18,7 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
   const goals = useSelector((state: IReducerState) => state.goalsReducer.goals);
-
-  useEffect(() => {
-    dispatch(asyncListGoals());
-  }, [dispatch]);
 
   return (
     <Header title="Goals">

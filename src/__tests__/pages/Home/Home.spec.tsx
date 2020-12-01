@@ -18,7 +18,6 @@ jest.mock('connected-react-router', () => {
 
 jest.mock('react-redux', () => {
   return {
-    useDispatch: () => jest.fn(),
     useSelector: () => [
       {
         id: '442ac5e8-74ed-4c25-a785-b56e4d3f82bb',

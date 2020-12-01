@@ -40,6 +40,26 @@ function* asyncCreateGoal({
 
   history.push(routesConstants.FEEDBACK_ADD_GOAL);
 }
+
+interface IAsyncRemoveGoalDTO {
+  type: string;
+  payload: { goalId: string };
+}
+
+function* asyncRemoveGoal({ payload: { goalId } }: IAsyncRemoveGoalDTO) {
+  const goalsRedux = yield select(
+    (state: IReducerState) => state.goalsReducer.goals,
+  );
+
+  const newGoals = goalsRedux.filter((goal: Goal) => goal.id !== goalId);
+
+  upadateGoals({ goals: newGoals });
+
+  yield put(changeGoals({ goals: newGoals }));
+
+  history.push(routesConstants.HOME);
+}
+
 interface IAsyncAddDepositDTO {
   type: string;
   payload: { description: string; value: number; goalId: string };
@@ -93,4 +113,5 @@ export default function* goalsSaga() {
   yield takeEvery(goalsActions.ASYNC_CREATE_DEPOSIT, asyncCreateDeposit);
   yield takeEvery(goalsActions.ASYNC_LIST_GOALS, asyncListGoals);
   yield takeEvery(goalsActions.ASYNC_LIST_GOAL, asyncListGoal);
+  yield takeEvery(goalsActions.ASYNC_DELETE_GOAL, asyncRemoveGoal);
 }

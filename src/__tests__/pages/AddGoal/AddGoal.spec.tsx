@@ -47,6 +47,7 @@ describe('AddGoal page', () => {
   const setState = jest.fn();
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     useStateMock.mockImplementation((init: any) => [
       'value-to-able-click',
       setState,
