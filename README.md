@@ -1,4 +1,28 @@
-# goals-web
+# goals-web  
+  
+This is only a application to practice knowledgements in React.js and TypeScript. This application has functionalities as create goal with a expect value and a deadline to reach goal, add deposit to goal, exclude deposit and exclude goal.  
+  
+Is not recommended to use this application in production.  
+  
+## Layouts  
+### Home  
+<img src="/layouts/home.png" width="400x">  
+  
+### Goal details  
+<img src="/layouts/goal_details.png" width="400x">  
+  
+### Add goal  
+<img src="/layouts/add_goal.png" width="400x">  
+  
+### Add deposit  
+<img src="/layouts/add_deposit.png" width="400x">  
+  
+### Feedback add goal  
+<img src="/layouts/feedback_add_goal.png" width="400x">  
+
+### Feedback add deposit  
+<img src="/layouts/feedback_add_deposit.png" width="400x">  
+
 
 # Getting Started with Create React App
 
