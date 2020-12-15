@@ -19,6 +19,7 @@ import {
   ContainerButtons,
   BackButton,
   AddButton,
+  FeedbackError,
 } from './styles';
 
 interface IParams {
@@ -111,6 +112,11 @@ const AddDeposit: React.FC = () => {
             onChange={handleValueDeposit}
             max={maxDeposit}
           />
+          {parseFloat(valueDeposit) > maxDeposit && (
+            <FeedbackError>
+              This value higher than value necessary to complete goal
+            </FeedbackError>
+          )}
         </ContainerInputs>
         <ContainerButtons>
           <BackButton data-testid="back-button" onClick={handleBack}>

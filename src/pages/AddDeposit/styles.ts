@@ -66,3 +66,8 @@ export const AddButton = styled.button`
       `}
   }
 `;
+
+export const FeedbackError = styled.text`
+  font-size: 14px;
+  color: #d90d0d;
+`;
