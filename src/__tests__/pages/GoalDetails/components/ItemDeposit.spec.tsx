@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState as useStateMock } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 

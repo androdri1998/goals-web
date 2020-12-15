@@ -10,6 +10,7 @@ import {
   Footer,
   Content,
   Title,
+  ContainerItemsFooter,
 } from './styles';
 
 interface IResumeGoalsProps {
@@ -86,6 +87,14 @@ const ResumeGoals: React.FC<IResumeGoalsProps> = ({ goals }) => {
     return totalRached;
   }, [goals]);
 
+  const totalGoals = useMemo(() => {
+    if (goals) {
+      return goals.length;
+    }
+
+    return 0;
+  }, [goals]);
+
   return (
     <Container>
       <Title>Resume</Title>
@@ -103,10 +112,18 @@ const ResumeGoals: React.FC<IResumeGoalsProps> = ({ goals }) => {
         </div>
       </Content>
       <Footer>
-        <div>
-          <p>{totalGoalsReached}</p>
-        </div>
-        <span className="description">Goals reached</span>
+        <ContainerItemsFooter>
+          <div>
+            <p>{totalGoalsReached}</p>
+          </div>
+          <span className="description">Goals reached</span>
+        </ContainerItemsFooter>
+        <ContainerItemsFooter>
+          <div>
+            <p>{totalGoals}</p>
+          </div>
+          <span className="description">Total goals</span>
+        </ContainerItemsFooter>
       </Footer>
     </Container>
   );

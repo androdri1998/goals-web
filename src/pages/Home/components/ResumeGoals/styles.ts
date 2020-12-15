@@ -72,7 +72,6 @@ export const ProgressBar = styled.div<IProgressBarProps>`
 
 export const Footer = styled.footer`
   display: flex;
-  flex-direction: column;
 
   margin-top: 50px;
 
@@ -94,4 +93,8 @@ export const Footer = styled.footer`
 
     font-weight: 500;
   }
+`;
+
+export const ContainerItemsFooter = styled.span`
+  margin-right: 20px;
 `;
