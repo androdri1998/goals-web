@@ -1,6 +1,6 @@
 # goals-web  
   
-This is only a application to practice knowledgements in React.js and TypeScript. This application has functionalities as create goal with a expect value and a deadline to reach goal, add deposit to goal, exclude deposit and exclude goal.  
+This is only a application to practice knowledgements in React.js and TypeScript. This application has functionalities as create goal with a expect value and a deadline to reach goal, add deposit to goal, exclude deposit from goal and exclude goal, all operations to add and exclude goals and deposits are did using localstorage API.
   
 Is not recommended to use this application in production.  
   
